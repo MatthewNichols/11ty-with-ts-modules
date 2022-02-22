@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "sourceMap": true,
+    "outDir": "client-side-compiled"
+  },
+  "include": [
+    "src/script/**/*.ts"
+  ]
+}

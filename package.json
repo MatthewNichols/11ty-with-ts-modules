@@ -1,0 +1,34 @@
+{
+  "name": "11ty-with-ts-modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:web": "ELEVENTY_ENV=production npx @11ty/eleventy",
+    "serve:web": "ELEVENTY_ENV=development npx @11ty/eleventy --serve",
+    "min:js": "npx uglify-js _site/scripts/index.bundled.js --output _site/scripts/index.min.js",
+    "build:js": "tsc --build",
+    "bundle:js": "rollup -c rollup.config.js",
+    "build-bundle:js": "npm-run-all -s clean:js build:js bundle:js",
+    "watch:js": "tsc --build --watch",
+    "clean:js": "rm -rf client-side-compiled",
+    "clean:outputjs": "rm -rf _site/scripts",
+    "dev": "npm-run-all -p serve:web watch:js",
+    "build": "npm-run-all -s clean clean:js build-bundle:js clean:js build:web min:js",
+    "clean": "rm -rf _site"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
+    "@open-wc/building-rollup": "^2.0.1",
+    "deepmerge": "^4.2.2",
+    "npm-run-all": "^4.1.5",
+    "npm-watch": "^0.11.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.67.3",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "typescript": "^4.5.5",
+    "uglify-js": "^3.15.1"
+  }
+}
